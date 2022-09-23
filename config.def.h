@@ -1,9 +1,7 @@
 /* See LICENSE file for copyright and license details. */
-
-/* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const int gappx     = 12;                /* gaps between windows */
-static const unsigned int snap      = 12;       /* snap pixel */
+static const int gappx              = 9;                /* gaps between windows */
+static const unsigned int snap      = 9;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka:size=14" };
@@ -15,26 +13,19 @@ static const char col_purple[]      = "#F26419";
 static const char col_red[]         = "#f20092";
 
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray1, col_gray1, col_gray1 },
 	[SchemeSel]  = { col_gray1, col_gray1,col_purple },
 };
 
-/* tagging */
 static const char *tags[] = { "1", "2", "3", "4" };
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class           instance    title        tags mask     isfloating   monitor */
-	//{"kitty",    NULL,       NULL,                      0,            1,           -1 },
-	{"Pavucontrol",    NULL,       NULL,                      0,            1,           -1 },
-	{"Blueman-manager", NULL,      NULL,                      0,            1,           -1 },
-	{ NULL,            NULL,       "Picture in picture",      0,            1,           -1 },
-	{"Slack",         NULL,       NULL,                 1<<2,            0,           -1 },
-	{"Discord",         NULL,       NULL,                 1<<2,            0,           -1 },
+	/* class            instance    title                  tags mask     isfloating   monitor */
+	{"Pavucontrol",     NULL,       NULL,                   0,            1,           -1 },
+	{"Blueman-manager", NULL,       NULL,                   0,            1,           -1 },
+	{ NULL,             NULL,       "Picture in picture",   0,            1,           -1 },
+	{"Slack",           NULL,       NULL,                   1<<2,         0,           -1 },
+	{"Discord",         NULL,       NULL,                   1<<2,         0,           -1 },
 };
 
 /* layout(s) */
@@ -44,7 +35,6 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 #include "fibonacci.c"
 static const Layout layouts[] = {
-	/* symbol     arrange function */
 	{ "[\\]",     dwindle },
 	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
@@ -87,14 +77,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      spawn,          {.v = bluecmd } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = lockcmd } },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = powercmd} },
-	{ ControlMask,         XK_apostrophe,      focusstack,     {.i = +1 } },
-	{ ControlMask,                  XK_i,      focusstack,     {.i = -1 } },
+	{ ControlMask,                  XK_i,      focusstack,     {.i = +1 } },
+	{ ControlMask,                  XK_n,      focusstack,     {.i = -1 } },
 	{ MODKEY,               XK_semicolon,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ ControlMask,                  XK_o,      movestack,      {.i = +1 } },
-	{ ControlMask,          XK_semicolon,      movestack,      {.i = -1 } },
+	{ ControlMask,                  XK_u,      movestack,      {.i = +1 } },
+	{ ControlMask,                  XK_e,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
